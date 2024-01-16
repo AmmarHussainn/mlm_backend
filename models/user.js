@@ -1,4 +1,3 @@
-// User.js
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -7,8 +6,11 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   contactInformation: { type: String, required: true },
-  role: { type: String, enum: ['admin', 'user'], default: 'user' }, // Add this line
+  role: { type: String, enum: ['admin', 'user'], default: 'user' },
   status: { type: String, default: 'Pending' },
+  referredBy: { type: String, default: null }, // Field to store the referrer's code
+  referralCode: { type: String }, // New field to store the user's referral code
+  referrer: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Reference to the referrer user
 });
 
 // Hash the password before saving to the database

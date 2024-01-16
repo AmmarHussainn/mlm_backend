@@ -22,5 +22,8 @@ router.put('/assignSubscription/:email', UserController.assignSubscription);
 // Login a user
 router.post('/login', UserController.login);
 
+// Save referral code
+router.post('/saveReferralCode', UserController.saveReferralCode);
+
 // Export the router
 module.exports = router;
